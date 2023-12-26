@@ -1,0 +1,561 @@
+Received: from 10.197.37.200
+ by atlas115.free.mail.bf1.yahoo.com pod-id NONE with HTTPS; Tue, 26 Dec 2023 14:33:32 +0000
+Return-Path: <bounce-1136052-1795-140693-kyule64=yahoo.com@d33c.emsend3.com>
+X-Originating-Ip: [52.128.42.104]
+Received-SPF: pass (domain of d33c.emsend3.com designates 52.128.42.104 as permitted sender)
+Authentication-Results: atlas115.free.mail.bf1.yahoo.com;
+ dkim=pass header.i=@eccouncil.org header.s=dk;
+ dkim=pass header.i=@acems1.com header.s=dk;
+ spf=pass smtp.mailfrom=d33c.emsend3.com;
+ dmarc=pass(p=QUARANTINE) header.from=eccouncil.org;
+X-Apparently-To: kyule64@yahoo.com; Tue, 26 Dec 2023 14:33:32 +0000
+X-YMailISG: 04zb0KkWLDsZSMokE34KfXpiyvTUu9U.yl8onx1.QqZ32TQJ
+ FVeesBmrMp.zfqLTzoAME_kGvtoRU1pD9iwHgGo.YLW9SlO0Qju56uwx0X1Q
+ 7wQJ_KrBM9peG6UoxRyInmFzPwHayziUs4pqXXbokWXPad6qpn3B794c8WPb
+ n1FPGaLBS2HjrYfk2JV2OZNO2XyCZV61wTLGSfAUO9h9dMAj6cS6oQWGKJDt
+ mdsN0_QSUwSWkbtp_5Fb87jcapmTjzBh7q.I8nlGxI2da5DQPWF6kggvaavg
+ g_yOq4mUCR5EPrgEfPZMFUQjt8i62g9K.J_pbLwp3YhGw1HwErTSyD9J9MZf
+ ANeFPVrwTMvEpTy7vGc0bds.XDvTfVcAdt7uihnWW_4njnaBvkVn7cZfAasj
+ RJlDeI5mV8kQs8__Lqmqr5oZcqp6608HV.kGJ7u8kplh9Hqmar02MMMgsQfO
+ UOROrlUPGIJvRzw8AnbsPaasKgbBrsZSZ2VMKJY1i9Ze09yxPG3bcWwCkbRh
+ X.GLvKYNBP7BrIH6Htb1ZgajE1Exs8yCj_8xv1Bc41Wp6t7PcPjrtKN1pYLB
+ UUBQL.xBnGjQuzw09slvPfoLVjB6RwB.mFtwjhQ6siTXWV9CkXDKFaICXN5n
+ dnWh7YDgkCLjzJi0IyfUWSiPOs2rPXJqwK18kQFkdW0yuR0ys5VNNDbqd2lT
+ alEa9MeNSyqWHxo_IAzZrTbnSUbffKSX4W.Em7GVgArN7KBxgbgjU9sUQJQv
+ QE0OQSHx7U6kjz9yWklHC0knDTwHxy1S5BikKgwhSXEQ4Emolru7XYHK6Nom
+ J6LJHMewMee_D.GiV5jQUSxCaQNNNYIOk_.hXokgvIu3p9IqYsRQEnfLyaoc
+ qBgqUcmXSKuCryemrEkWZ6Wien_4LeXKAqZayT8WkXtmiKGylfz6G2UWqR.M
+ W2UFxU9JB4KrrT8pTINTWkp.jI_CQ9bzI_gMaJfZBamJTDpkQMWEO_RRLInn
+ IXjXzBV5pVmUmolixJIuE5b4okS5xdc4rNkqpju_oXxaBoFtB42MQdqpd0F2
+ GnJ6jUQmKjsrFqaTTH1C5zDM2WSVMGShwCrCAI.fE_YwTUvR1jNHfM6KRZDx
+ y55Ae6ab3XVisnFIGp99SqQ2cgTNHLE8x_eByfUn91T8ZLSEP6noQ2NsNSvW
+ q6taV_tl7qnIQn6qUdFJAwhHy6uS0IUJK07EebzhlxzssJng7HqqOuuq5Jla
+ NTrFoPqg5SLhP_eeUZ9sqxVBQCv8Gi6TG5LFXQxpYD_ITKJbo20V6XskzGAn
+ BQOp_xYoZ.PeLo2kaEs_4g9pkJULp1ua8OBd204cGYwuSpIQ4g--
+Received: from 52.128.42.104 (EHLO d33c.emsend3.com)
+ by 10.197.37.200 with SMTPs
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256);
+ Tue, 26 Dec 2023 14:33:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=dk; d=eccouncil.org;
+ h=To:From:Reply-To:Subject:Date:MIME-Version:Content-Type:
+ Content-Transfer-Encoding:List-Unsubscribe:List-Unsubscribe-Post:Message-ID;
+ i=learn@eccouncil.org;
+ bh=CDpHqWn6mljO819TRYQihGjyUEj6xUylXEwrvlqAoiw=;
+ b=w9BOYhijM3ZsmGPzZL/6c/QEmv4yux2mT8t4ImYNn56mdo1WZEF314Hr+EEvi5utRH80RNTGJ86L
+   ccCQRiiiCVdGumw/UFeQM1dU3/QUW2ckTSz9i0f/sYpin59/wbZ/xZCgdSHg7KT0FpxsNMo2dH//
+   0vzv7Sf8INq8g+OzqZY=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=dk; d=acems1.com;
+ h=To:From:Reply-To:Subject:Date:MIME-Version:Content-Type:
+ Content-Transfer-Encoding:List-Unsubscribe:List-Unsubscribe-Post:Message-ID;
+ bh=CDpHqWn6mljO819TRYQihGjyUEj6xUylXEwrvlqAoiw=;
+ b=F94AwZNwXOoPV6vnW/2iq1WJOOAfXjBAx3Bb2lXE3xU6KdUyTZXPizomTFbRh04/B2pTkyDCR8+z
+   aLM77CQAnkM3iwpR0FUedjyZ8PdwmK/e9Aa49WtNnIkxhKuYtYQL4F+hWkCtmOyOYTvlZALHslG2
+   +rTDD1O2JFRejMYpvnE=
+Received: by d33c.emsend3.com id hhbi3o365bkt for <kyule64@yahoo.com>; Tue, 26 Dec 2023 14:27:39 +0000 (envelope-from <bounce-1136052-1795-140693-kyule64=yahoo.com@d33c.emsend3.com>)
+X-Mailer: ActiveCampaign Mailer
+CFBL-Address: fbl-report@acems1.com; report=arf
+To: "Joseph Kilatya" <kyule64@yahoo.com>
+From: "EC-Council Learning" <learn@eccouncil.org>
+Reply-To: learnersupport@eccouncil.org
+Subject: =?utf-8?Q?=F0=9F=95=92_Tick-Tock:_Grab_Top_Cybersecurity_Course?=
+ =?utf-8?Q?s_for_Just_$1.99_Before_the_Holiday_Clock_Strikes!?=
+Date: Tue, 26 Dec 2023 08:07:01 -0600
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="_=_swift-265746036658ade05dc29d7.49153783_=_"
+Content-Transfer-Encoding: 7bit
+X-DKIM-Options: s=dk
+X-mid: a3l1bGU2NEB5YWhvby5jb20gLCBjMTc5NSAsIG0xODE0ICwgczMwMjMzNA
+x-virtual-mta: d33c.emsend3.com
+Feedback-ID: 1136052:1136052.1795:d33c.emsend3.com:activecampaign
+X-250ok-CID: 1136052-1795
+List-Unsubscribe: <mailto:unsubscribe-fdf1699f95e796eb398a9b9031745999-1795-060a163b8f78fb6518bfa688da531408@d33c.emsend3.com>,
+ <http://eccouncil34531.activehosted.com/box.php?nl=6&c=1795&m=1814&s=060a163b8f78fb6518bfa688da531408&funcml=unsub2&luha=1>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Message-ID: <20231226142739.23380.754966366.swift@eccouncil34531.activehosted.com>
+Content-Length: 28304
+
+
+--_=_swift-265746036658ade05dc29d7.49153783_=_
+Content-Type: text/plain; charset=utf-8
+
+https://eccouncil34531.lt.acemlnb.com/Prod/link-tracker?redirectUrl=aHR0cHMlM0ElMkYlMkZjb2RlcmVkbWFya2V0aW5nLmVjY291bmNpbC5vcmclMkZob2xpZGF5LW9mZmVyLTIwMjMlMkYlM0Z1dG1fc291cmNlJTNEYWN0aXZlY2FtcGFpZ24lMjZ1dG1fbWVkaXVtJTNEZW1haWwlMjZ1dG1fY2FtcGFpZ24lM0Rob2xpZGF5LW9mZmVyLTIwMjMlMjZ1dG1fdGVybSUzRGVtYWlsMTA=&sig=5sduDtmC1x9mmd5gvzw7cWLR2Fp99H2g5d3PmGG3LxwP&iat=1703600859&a=%7C%7C66788452%7C%7C&account=eccouncil34531%2Eactivehosted%2Ecom&email=q6gL0FsDqpj3T%2FnoDZaUx%2BTGf1kHAWx6s0kKOWj%2BeqDO%3ADUBFX8XspM5vOqOTZ2ZqVGJkhqnozzaI&s=060a163b8f78fb6518bfa688da531408&i=1795A1814A6A11575
+
+The demand for skilled cybersecurity professionals is skyrocketing,
+reflecting the continuous evolution of the threat landscape! 
+
+Stay relevant and meet industry demands by securing your access to our 
+
+**'Mastering Cybersecurity - Holiday Bundle 2023' - designed to
+equip you with the most sought-after skills.** 
+
+**Act fast and grab the 15-course bundle (worth $1359.82) for just
+$24.99 and enjoy 3 free holiday bonus courses!** 
+
+Eyeing a particular skill? No problem! 
+
+**Grab any individual course for just $1.99!** 
+
+https://eccouncil34531.lt.acemlnb.com/Prod/link-tracker?redirectUrl=aHR0cHMlM0ElMkYlMkZjb2RlcmVkbWFya2V0aW5nLmVjY291bmNpbC5vcmclMkZob2xpZGF5LW9mZmVyLTIwMjMlMkYlM0Z1dG1fc291cmNlJTNEYWN0aXZlY2FtcGFpZ24lMjZ1dG1fbWVkaXVtJTNEZW1haWwlMjZ1dG1fY2FtcGFpZ24lM0Rob2xpZGF5LW9mZmVyLTIwMjMlMjZ1dG1fdGVybSUzRGVtYWlsMTA=&sig=5sduDtmC1x9mmd5gvzw7cWLR2Fp99H2g5d3PmGG3LxwP&iat=1703600859&a=%7C%7C66788452%7C%7C&account=eccouncil34531%2Eactivehosted%2Ecom&email=q6gL0FsDqpj3T%2FnoDZaUx%2BTGf1kHAWx6s0kKOWj%2BeqDO%3ADUBFX8XspM5vOqOTZ2ZqVGJkhqnozzaI&s=060a163b8f78fb6518bfa688da531408&i=1795A1814A6A11575
+
+$1359.82   $24.99 
+
+**One-Time Payment**
+
+access to 15 in-demand cybersecurity courses 
+
+**3 free holiday bonus courses** worth $279.97 for a limited time 
+
+70+ hours of premium practical learning
+
+certificates of achievement after completing each course
+
+year-long access to courses 
+
+access to content updates and premium support for 1 year
+
+https://eccouncil34531.lt.acemlnb.com/Prod/link-tracker?redirectUrl=aHR0cHMlM0ElMkYlMkZjb2RlcmVkbWFya2V0aW5nLmVjY291bmNpbC5vcmclMkZob2xpZGF5LW9mZmVyLTIwMjMlMkYlM0Z1dG1fc291cmNlJTNEYWN0aXZlY2FtcGFpZ24lMjZ1dG1fbWVkaXVtJTNEZW1haWwlMjZ1dG1fY2FtcGFpZ24lM0Rob2xpZGF5LW9mZmVyLTIwMjMlMjZ1dG1fdGVybSUzRGVtYWlsMTA=&sig=5sduDtmC1x9mmd5gvzw7cWLR2Fp99H2g5d3PmGG3LxwP&iat=1703600859&a=%7C%7C66788452%7C%7C&account=eccouncil34531%2Eactivehosted%2Ecom&email=q6gL0FsDqpj3T%2FnoDZaUx%2BTGf1kHAWx6s0kKOWj%2BeqDO%3ADUBFX8XspM5vOqOTZ2ZqVGJkhqnozzaI&s=060a163b8f78fb6518bfa688da531408&i=1795A1814A6A11575
+
+https://eccouncil34531.lt.acemlnb.com/Prod/link-tracker?redirectUrl=aHR0cHMlM0ElMkYlMkZjb2RlcmVkbWFya2V0aW5nLmVjY291bmNpbC5vcmclMkZob2xpZGF5LW9mZmVyLTIwMjMlMkYlM0Z1dG1fc291cmNlJTNEYWN0aXZlY2FtcGFpZ24lMjZ1dG1fbWVkaXVtJTNEZW1haWwlMjZ1dG1fY2FtcGFpZ24lM0Rob2xpZGF5LW9mZmVyLTIwMjMlMjZ1dG1fdGVybSUzRGVtYWlsMTA=&sig=5sduDtmC1x9mmd5gvzw7cWLR2Fp99H2g5d3PmGG3LxwP&iat=1703600859&a=%7C%7C66788452%7C%7C&account=eccouncil34531%2Eactivehosted%2Ecom&email=q6gL0FsDqpj3T%2FnoDZaUx%2BTGf1kHAWx6s0kKOWj%2BeqDO%3ADUBFX8XspM5vOqOTZ2ZqVGJkhqnozzaI&s=060a163b8f78fb6518bfa688da531408&i=1795A1814A6A11575
+
+**Plus 3 Holiday bonus courses for free when you 
+buy all 15 courses!** 
+
+https://eccouncil34531.lt.acemlnb.com/Prod/link-tracker?redirectUrl=aHR0cHMlM0ElMkYlMkZjb2RlcmVkbWFya2V0aW5nLmVjY291bmNpbC5vcmclMkZob2xpZGF5LW9mZmVyLTIwMjMlMkYlM0Z1dG1fc291cmNlJTNEYWN0aXZlY2FtcGFpZ24lMjZ1dG1fbWVkaXVtJTNEZW1haWwlMjZ1dG1fY2FtcGFpZ24lM0Rob2xpZGF5LW9mZmVyLTIwMjMlMjZ1dG1fdGVybSUzRGVtYWlsMTA=&sig=5sduDtmC1x9mmd5gvzw7cWLR2Fp99H2g5d3PmGG3LxwP&iat=1703600859&a=%7C%7C66788452%7C%7C&account=eccouncil34531%2Eactivehosted%2Ecom&email=q6gL0FsDqpj3T%2FnoDZaUx%2BTGf1kHAWx6s0kKOWj%2BeqDO%3ADUBFX8XspM5vOqOTZ2ZqVGJkhqnozzaI&s=060a163b8f78fb6518bfa688da531408&i=1795A1814A6A11575
+
+https://eccouncil34531.lt.acemlnb.com/Prod/link-tracker?redirectUrl=aHR0cHMlM0ElMkYlMkZ3d3cuZmFjZWJvb2suY29tJTJGRUNDb3VuY2lsTGVhcm5pbmc=&sig=Cjbx9sa8ckFKbkiHtKsk5g2KFxbG2VTHzawbbazHBjj9&iat=1703600859&a=%7C%7C66788452%7C%7C&account=eccouncil34531%2Eactivehosted%2Ecom&email=q6gL0FsDqpj3T%2FnoDZaUx%2BTGf1kHAWx6s0kKOWj%2BeqDO%3ADUBFX8XspM5vOqOTZ2ZqVGJkhqnozzaI&s=060a163b8f78fb6518bfa688da531408&i=1795A1814A6A11567 
+
+https://eccouncil34531.lt.acemlnb.com/Prod/link-tracker?redirectUrl=aHR0cHMlM0ElMkYlMkZ0d2l0dGVyLmNvbSUyRkVDQ19MZWFybmluZw==&sig=71rAmhnbDnT6NjQj7yan797shmFBNdEgUVFT4x2Dh19d&iat=1703600859&a=%7C%7C66788452%7C%7C&account=eccouncil34531%2Eactivehosted%2Ecom&email=q6gL0FsDqpj3T%2FnoDZaUx%2BTGf1kHAWx6s0kKOWj%2BeqDO%3ADUBFX8XspM5vOqOTZ2ZqVGJkhqnozzaI&s=060a163b8f78fb6518bfa688da531408&i=1795A1814A6A11568 
+
+https://eccouncil34531.lt.acemlnb.com/Prod/link-tracker?redirectUrl=aHR0cHMlM0ElMkYlMkZ3d3cubGlua2VkaW4uY29tJTJGY29tcGFueSUyRmVjLWNvdW5jaWwtbGVhcm5pbmclMkY=&sig=8jhMWJnZJdaggmpDARGmxQ6KPkv5JeassVz75GZGkrhH&iat=1703600859&a=%7C%7C66788452%7C%7C&account=eccouncil34531%2Eactivehosted%2Ecom&email=q6gL0FsDqpj3T%2FnoDZaUx%2BTGf1kHAWx6s0kKOWj%2BeqDO%3ADUBFX8XspM5vOqOTZ2ZqVGJkhqnozzaI&s=060a163b8f78fb6518bfa688da531408&i=1795A1814A6A11569 
+
+https://eccouncil34531.lt.acemlnb.com/Prod/link-tracker?redirectUrl=aHR0cHMlM0ElMkYlMkZ3d3cueW91dHViZS5jb20lMkYlNDBFQ0NvdW5jaWwtTGVhcm5pbmc=&sig=6RRGu8cVGdbr9c1ALFDfCDxmZNENX4SU1jSjhSUdtZ62&iat=1703600859&a=%7C%7C66788452%7C%7C&account=eccouncil34531%2Eactivehosted%2Ecom&email=q6gL0FsDqpj3T%2FnoDZaUx%2BTGf1kHAWx6s0kKOWj%2BeqDO%3ADUBFX8XspM5vOqOTZ2ZqVGJkhqnozzaI&s=060a163b8f78fb6518bfa688da531408&i=1795A1814A6A11570 
+
+**Copyright © 2023** EC-Council  | Privacy
+Statement 
+_________________
+
+Sent to kyule64@yahoo.com
+
+Unsubscribe:
+http://eccouncil34531.activehosted.com/proc.php?nl=6&amp;c=1795&amp;m=1814&amp;s=060a163b8f78fb6518bfa688da531408&amp;act=unsub
+
+EC-Council International Limited, Sun Ave NE, 101C, Albuquerque, New Mexico 87109, United States
+--_=_swift-265746036658ade05dc29d7.49153783_=_
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html>=0A
+  <head>
+      <meta charset=3D"utf-8">
+=09 =20
+  </head>
+  <body>
+    <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" style=3D"table-layout:fixed" width=3D"100%">
+     =20
+        <tr>
+          <td align=3D"center" valign=3D"top" style=3D"border-radius: 10px;=
+">
+            <table align=3D"center" bgcolor=3D"#ffffff" width=3D"650" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-width:1px;borde=
+r-style:solid;border-color:#eeeded;border-spacing: 0px; border-spacing: 0px=
+; background: #ffffff; font-family:'Open Sans', Helvetica, Arial, 'sans-ser=
+if'; font-size: 16px; line-height:20px;">
+             =20
+=09=09=09=09 =20
+=09=09=09=09<!--Header-->
+=09=09=09=09 =20
+=09=09=09=09  <tr>
+=09=09=09=09=09  <td>
+=09=09=09=09=09=09  <a href=3D"https://eccouncil34531.lt.acemlnb.com/Prod/l=
+ink-tracker?redirectUrl=3DaHR0cHMlM0ElMkYlMkZjb2RlcmVkbWFya2V0aW5nLmVjY291b=
+mNpbC5vcmclMkZob2xpZGF5LW9mZmVyLTIwMjMlMkYlM0Z1dG1fc291cmNlJTNEYWN0aXZlY2Ft=
+cGFpZ24lMjZ1dG1fbWVkaXVtJTNEZW1haWwlMjZ1dG1fY2FtcGFpZ24lM0Rob2xpZGF5LW9mZmV=
+yLTIwMjMlMjZ1dG1fdGVybSUzRGVtYWlsMTA=3D&sig=3D5sduDtmC1x9mmd5gvzw7cWLR2Fp99=
+H2g5d3PmGG3LxwP&iat=3D1703600859&a=3D%7C%7C66788452%7C%7C&account=3Deccounc=
+il34531%2Eactivehosted%2Ecom&email=3Dq6gL0FsDqpj3T%2FnoDZaUx%2BTGf1kHAWx6s0=
+kKOWj%2BeqDO%3ADUBFX8XspM5vOqOTZ2ZqVGJkhqnozzaI&s=3D060a163b8f78fb6518bfa68=
+8da531408&i=3D1795A1814A6A11575" target=3D"_blank">
+=09=09=09=09=09=09=09  <img src=3D"https://edm-image.s3.us-west-2.amazonaws=
+.com/2023/Dec/Holiday-Offer-Emailer-Set2-EDM7/Holiday-Set2-EDM7-Banner.png"=
+ alt=3D"" width=3D"650">
+=09=09=09=09=09=09  </a>
+=09=09=09=09=09  </td>=0A
+=09=09=09=09  </tr>=0A
+=09=09=09=09 =20
+=09=09=09=09<!--Intro-->
+=09=09=09=09 =20
+=09=09=09=09  <tr>
+=09=09=09=09=09  <td style=3D"padding:30px;">
+=09=09=09=09=09=09  The demand for skilled cybersecurity professionals is s=
+kyrocketing, reflecting the continuous evolution of the threat landscape!
+=09=09=09=09=09=09  <br><br>
+=09=09=09=09=09=09  Stay relevant and meet industry demands by securing you=
+r access to our <strong>=E2=80=98Mastering Cybersecurity =E2=80=93 Holiday =
+Bundle 2023=E2=80=99 =E2=80=93 designed to equip you with the most sought-a=
+fter skills.</strong>
+=09=09=09=09=09=09  <br><br>
+=09=09=09=09=09=09  <strong>Act fast and grab the 15-course bundle (worth $=
+1359.82) for just $24.99 and enjoy 3 free holiday bonus courses!</strong>
+=09=09=09=09=09=09  <br><br>
+=09=09=09=09=09=09  Eyeing a particular skill? No problem! <strong>Grab any=
+ individual course for just $1.99!</strong>
+=09=09=09=09=09  </td>=0A
+=09=09=09=09  </tr>=0A
+=09=09=09=09  <tr>
+=09=09=09=09=09  <td align=3D"center">
+=09=09=09=09=09=09  <a href=3D"https://eccouncil34531.lt.acemlnb.com/Prod/l=
+ink-tracker?redirectUrl=3DaHR0cHMlM0ElMkYlMkZjb2RlcmVkbWFya2V0aW5nLmVjY291b=
+mNpbC5vcmclMkZob2xpZGF5LW9mZmVyLTIwMjMlMkYlM0Z1dG1fc291cmNlJTNEYWN0aXZlY2Ft=
+cGFpZ24lMjZ1dG1fbWVkaXVtJTNEZW1haWwlMjZ1dG1fY2FtcGFpZ24lM0Rob2xpZGF5LW9mZmV=
+yLTIwMjMlMjZ1dG1fdGVybSUzRGVtYWlsMTA=3D&sig=3D5sduDtmC1x9mmd5gvzw7cWLR2Fp99=
+H2g5d3PmGG3LxwP&iat=3D1703600859&a=3D%7C%7C66788452%7C%7C&account=3Deccounc=
+il34531%2Eactivehosted%2Ecom&email=3Dq6gL0FsDqpj3T%2FnoDZaUx%2BTGf1kHAWx6s0=
+kKOWj%2BeqDO%3ADUBFX8XspM5vOqOTZ2ZqVGJkhqnozzaI&s=3D060a163b8f78fb6518bfa68=
+8da531408&i=3D1795A1814A6A11575" target=3D"_blank">
+=09=09=09=09=09=09=09  <img src=3D"https://edm-image.s3.us-west-2.amazonaws=
+.com/2023/Dec/Holiday-Offer-Emailer-Set2-EDM6/Get-Offer-Lasts-Red-Btn.png" =
+alt=3D"" width=3D"280">
+=09=09=09=09=09=09  </a>
+=09=09=09=09=09  </td>=0A
+=09=09=09=09  </tr>=0A
+=09=09=09=09  <tr><td height=3D"30"></td>=0A</tr>=0A <!--Spacing-->
+=09=09=09=09 =20
+=09=09=09=09  <!--Bundle-Section-->
+=09=09=09=09 =20
+=09=09=09=09  <tr>
+=09=09=09=09=09  <td>
+=09=09=09=09=09=09  <img src=3D"https://edm-image.s3.us-west-2.amazonaws.co=
+m/2023/Dec/Holiday-Offer-Emailer-Set2-EDM1/Bundle-Heading.png" alt=3D"" wid=
+th=3D"650">
+=09=09=09=09=09  </td>=0A
+=09=09=09=09  </tr>=0A
+=09=09=09=09  <tr>
+=09=09=09=09=09<td style=3D"padding: 30px 0px;">
+=09=09=09=09=09=09<table width=3D"590" border=3D"0" cellspacing=3D"0" cellp=
+adding=3D"0" align=3D"center">
+=09=09=09=09=09=09 =20
+=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09  <td width=3D"255" valign=3D"middle" style=3D"line-he=
+ight: 0px;">
+=09=09=09=09=09=09=09=09  <img src=3D"https://edm-image.s3.us-west-2.amazon=
+aws.com/2023/Dec/Holiday-Offer-Emailer-Set1-EDM1/Holiday-Bundle.png" alt=3D=
+"" width=3D"240">
+=09=09=09=09=09=09=09  </td>=0A
+=09=09=09=09=09=09=09  <td width=3D"330" valign=3D"middle" align=3D"right">
+=09=09=09=09=09=09=09=09  <table width=3D"330" border=3D"0" cellspacing=3D"=
+0" cellpadding=3D"0">
+=09=09=09=09=09=09=09=09=09 =20
+=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09  <td style=3D"color: #b8110f;">
+=09=09=09=09=09=09=09=09=09=09=09  <strong>
+=09=09=09=09=09=09=09=09=09=09=09=09  <span style=3D"text-decoration: line-=
+through; color: #b8110f; font-size: 23px;"><span style=3D"color: #000;">$13=
+59.82</span></span>&nbsp;&nbsp;
+            =09=09   =09=09=09=09=09  =09=09<span style=3D"font-size: 29px;=
+">$24.99</span>
+=09=09=09=09=09=09=09=09=09=09=09  </strong>
+=09=09=09=09=09=09=09=09=09=09  </td>=0A
+=09=09=09=09=09=09=09=09=09=09</tr>=0A
+=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09  <td style=3D"padding: 10px 0px;"><span styl=
+e=3D"font-size: 18px;"><strong>One-Time Payment</strong></span></td>=0A
+=09=09=09=09=09=09=09=09=09=09</tr>=0A
+=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09  <td>
+=09=09=09=09=09=09=09=09=09=09=09  <table border=3D"0" cellspacing=3D"0" ce=
+llpadding=3D"0" style=3D"line-height: 20px; font-size: 14px;">
+=09=09=09=09=09=09=09=09=09=09=09=09 =20
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09  <td width=3D"5%" valign=3D"top"><i=
+mg src=3D"https://edm-image.s3.us-west-2.amazonaws.com/2022/Dec/Holiday-Off=
+er-Emailer-Set-1-EDM-1/Bullet.png" alt=3D"Bullet Icon" title=3D"Bullet Icon=
+" width=3D"11" height=3D"12" /></td>=0A
+                                =09   =09=09=09=09  <td width=3D"95%">acces=
+s to 15 in-demand cybersecurity courses </td>=0A
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>=0A
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09  <td width=3D"5%" valign=3D"top"><i=
+mg src=3D"https://edm-image.s3.us-west-2.amazonaws.com/2022/Dec/Holiday-Off=
+er-Emailer-Set-1-EDM-1/Bullet.png" alt=3D"Bullet Icon" title=3D"Bullet Icon=
+" width=3D"11" height=3D"12" /></td>=0A
+                                =09   =09=09=09=09  <td width=3D"95%"><stro=
+ng>3 free holiday bonus courses</strong> worth $279.97 for a limited time <=
+/td>=0A
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>=0A
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09  <td width=3D"5%" valign=3D"top"><i=
+mg src=3D"https://edm-image.s3.us-west-2.amazonaws.com/2022/Dec/Holiday-Off=
+er-Emailer-Set-1-EDM-1/Bullet.png" alt=3D"Bullet Icon" title=3D"Bullet Icon=
+" width=3D"11" height=3D"12" /></td>=0A
+                                =09   =09=09=09=09  <td width=3D"95%">70+ h=
+ours of premium practical learning</td>=0A
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>=0A
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09  <td width=3D"5%" valign=3D"top"><i=
+mg src=3D"https://edm-image.s3.us-west-2.amazonaws.com/2022/Dec/Holiday-Off=
+er-Emailer-Set-1-EDM-1/Bullet.png" alt=3D"Bullet Icon" title=3D"Bullet Icon=
+" width=3D"11" height=3D"12" /></td>=0A
+                                =09   =09=09=09=09  <td width=3D"95%">certi=
+ficates of achievement after completing each course</td>=0A
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>=0A
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09  <td width=3D"5%" valign=3D"top"><i=
+mg src=3D"https://edm-image.s3.us-west-2.amazonaws.com/2022/Dec/Holiday-Off=
+er-Emailer-Set-1-EDM-1/Bullet.png" alt=3D"Bullet Icon" title=3D"Bullet Icon=
+" width=3D"11" height=3D"12" /></td>=0A
+                                =09   =09=09=09=09  <td width=3D"95%">year-=
+long access to courses </td>=0A
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>=0A
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09  <td width=3D"5%" valign=3D"top"><i=
+mg src=3D"https://edm-image.s3.us-west-2.amazonaws.com/2022/Dec/Holiday-Off=
+er-Emailer-Set-1-EDM-1/Bullet.png" alt=3D"Bullet Icon" title=3D"Bullet Icon=
+" width=3D"11" height=3D"12" /></td>=0A
+                                =09   =09=09=09=09  <td width=3D"95%">acces=
+s to content updates and premium support for 1 year</td>=0A
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>=0A
+=09=09=09=09=09=09=09=09=09=09=09=09 =20
+=09=09=09=09=09=09=09=09=09=09=09=09</table>=0A
+=09=09=09=09=09=09=09=09=09=09  </td>=0A
+=09=09=09=09=09=09=09=09=09=09</tr>=0A
+=09=09=09=09=09=09=09=09=09=09  <tr><td height=3D"20"></td>=0A</tr>=0A <!--=
+Spacing-->
+=09=09=09=09=09=09=09=09=09=09 =20
+=09=09=09=09=09=09=09=09=09=09  <tr>
+=09=09=09=09=09=09=09=09=09=09=09  <td>
+=09=09=09=09=09=09=09=09=09=09=09=09  <a href=3D"https://eccouncil34531.lt.=
+acemlnb.com/Prod/link-tracker?redirectUrl=3DaHR0cHMlM0ElMkYlMkZjb2RlcmVkbWF=
+ya2V0aW5nLmVjY291bmNpbC5vcmclMkZob2xpZGF5LW9mZmVyLTIwMjMlMkYlM0Z1dG1fc291cm=
+NlJTNEYWN0aXZlY2FtcGFpZ24lMjZ1dG1fbWVkaXVtJTNEZW1haWwlMjZ1dG1fY2FtcGFpZ24lM=
+0Rob2xpZGF5LW9mZmVyLTIwMjMlMjZ1dG1fdGVybSUzRGVtYWlsMTA=3D&sig=3D5sduDtmC1x9=
+mmd5gvzw7cWLR2Fp99H2g5d3PmGG3LxwP&iat=3D1703600859&a=3D%7C%7C66788452%7C%7C=
+&account=3Deccouncil34531%2Eactivehosted%2Ecom&email=3Dq6gL0FsDqpj3T%2FnoDZ=
+aUx%2BTGf1kHAWx6s0kKOWj%2BeqDO%3ADUBFX8XspM5vOqOTZ2ZqVGJkhqnozzaI&s=3D060a1=
+63b8f78fb6518bfa688da531408&i=3D1795A1814A6A11575" target=3D"_blank">
+=09=09=09=09=09=09=09=09=09=09=09=09=09  <img src=3D"https://edm-image.s3.u=
+s-west-2.amazonaws.com/2023/Dec/Holiday-Offer-Emailer-Set2-EDM1/Get-Limited=
+-Time-Offer.png" alt=3D"" width=3D"315">
+=09=09=09=09=09=09=09=09=09=09=09=09  </a>
+=09=09=09=09=09=09=09=09=09=09=09  </td>=0A
+=09=09=09=09=09=09=09=09=09=09  </tr>=0A
+=09=09=09=09=09=09=09=09=09 =20
+=09=09=09=09=09=09=09=09=09</table>=0A
+=09=09=09=09=09=09=09  </td>=0A
+=09=09=09=09=09=09=09</tr>=0A
+=09=09=09=09=09=09 =20
+=09=09=09=09=09=09</table>=0A
+=09=09=09=09=09</td>=0A
+=09=09=09=09</tr>=0A
+=09=09=09=09 =20
+=09=09=09=09  <!--Courses-Section-->
+=09=09=09=09 =20
+=09=09=09=09  <tr bgcolor=3D"#efefef">
+=09=09=09=09=09  <td>
+=09=09=09=09=09=09  <img src=3D"https://edm-image.s3.us-west-2.amazonaws.co=
+m/2023/Dec/Holiday-Offer-Emailer-Set2-EDM5/Course-Info-Heading.png" alt=3D"=
+" width=3D"650">
+=09=09=09=09=09  </td>=0A
+=09=09=09=09  </tr>=0A
+=09=09=09=09  <tr bgcolor=3D"#efefef"><td height=3D"30"></td>=0A</tr>=0A <!=
+--Spacing-->
+=09=09=09=09  <tr bgcolor=3D"#efefef">
+=09=09=09=09=09  <td align=3D"center">
+=09=09=09=09=09=09  <img src=3D"https://edm-image.s3.us-west-2.amazonaws.co=
+m/2023/Dec/Holiday-Offer-Emailer-Set2-EDM5/15-Course-Info.png" alt=3D"" wid=
+th=3D"590">
+=09=09=09=09=09  </td>=0A
+=09=09=09=09  </tr>=0A=09
+=09=09=09=09  <tr bgcolor=3D"#efefef"><td height=3D"30"></td>=0A</tr>=0A <!=
+--Spacing-->
+=09=09=09=09  <tr bgcolor=3D"#efefef">
+=09=09=09=09=09  <td align=3D"center">
+=09=09=09=09=09=09  <a href=3D"https://eccouncil34531.lt.acemlnb.com/Prod/l=
+ink-tracker?redirectUrl=3DaHR0cHMlM0ElMkYlMkZjb2RlcmVkbWFya2V0aW5nLmVjY291b=
+mNpbC5vcmclMkZob2xpZGF5LW9mZmVyLTIwMjMlMkYlM0Z1dG1fc291cmNlJTNEYWN0aXZlY2Ft=
+cGFpZ24lMjZ1dG1fbWVkaXVtJTNEZW1haWwlMjZ1dG1fY2FtcGFpZ24lM0Rob2xpZGF5LW9mZmV=
+yLTIwMjMlMjZ1dG1fdGVybSUzRGVtYWlsMTA=3D&sig=3D5sduDtmC1x9mmd5gvzw7cWLR2Fp99=
+H2g5d3PmGG3LxwP&iat=3D1703600859&a=3D%7C%7C66788452%7C%7C&account=3Deccounc=
+il34531%2Eactivehosted%2Ecom&email=3Dq6gL0FsDqpj3T%2FnoDZaUx%2BTGf1kHAWx6s0=
+kKOWj%2BeqDO%3ADUBFX8XspM5vOqOTZ2ZqVGJkhqnozzaI&s=3D060a163b8f78fb6518bfa68=
+8da531408&i=3D1795A1814A6A11575" target=3D"_blank">
+=09=09=09=09=09=09=09  <img src=3D"https://edm-image.s3.us-west-2.amazonaws=
+.com/2023/Dec/Holiday-Offer-Emailer-Set1-EDM1/Get-Limited-Time-Offer.png" a=
+lt=3D"" width=3D"315">
+=09=09=09=09=09=09  </a>
+=09=09=09=09=09  </td>=0A
+=09=09=09=09  </tr>=0A
+=09=09=09=09  <tr bgcolor=3D"#efefef"><td height=3D"30"></td>=0A</tr>=0A <!=
+--Spacing-->
+=09=09=09=09  <tr bgcolor=3D"#efefef">
+=09=09=09=09=09  <td align=3D"center" style=3D"font-family:'Poppins', Helve=
+tica, Arial, 'sans-serif'; font-size: 22px; line-height: 28px; padding: 0px=
+ 30px;">
+=09=09=09=09=09=09  <strong style=3D"color: #0f380f;">Plus 3 Holiday bonus =
+courses for free when you <br>buy all 15 courses!</strong>
+=09=09=09=09=09  </td>=0A
+=09=09=09=09  </tr>=0A
+=09=09=09=09  <tr bgcolor=3D"#efefef">
+=09=09=09=09=09  <td align=3D"center" style=3D"padding: 30px 0px;">
+=09=09=09=09=09=09  <img src=3D"https://edm-image.s3.us-west-2.amazonaws.co=
+m/2023/Dec/Holiday-Offer-Emailer-Set2-EDM5/Bonus-Course-Info.png" alt=3D"" =
+width=3D"590">
+=09=09=09=09=09  </td>=0A
+=09=09=09=09  </tr>=0A=09=09
+=09=09=09=09 =20
+=09=09=09=09  <!--Price-Section-->
+=09=09=09=09 =20
+=09=09=09=09  <tr bgcolor=3D"#b8110f">
+=09=09=09=09=09  <td>
+=09=09=09=09=09=09  <img src=3D"https://edm-image.s3.us-west-2.amazonaws.co=
+m/2023/Dec/Holiday-Offer-Emailer-Set1-EDM3/EDM3-Price-Section.png" alt=3D""=
+ width=3D"650">
+=09=09=09=09=09  </td>=0A
+=09=09=09=09  </tr>=0A
+=09=09=09=09  <tr bgcolor=3D"#b8110f">
+=09=09=09=09=09  <td align=3D"center" style=3D"padding: 0px 30px 30px;">
+=09=09=09=09=09=09  <a href=3D"https://eccouncil34531.lt.acemlnb.com/Prod/l=
+ink-tracker?redirectUrl=3DaHR0cHMlM0ElMkYlMkZjb2RlcmVkbWFya2V0aW5nLmVjY291b=
+mNpbC5vcmclMkZob2xpZGF5LW9mZmVyLTIwMjMlMkYlM0Z1dG1fc291cmNlJTNEYWN0aXZlY2Ft=
+cGFpZ24lMjZ1dG1fbWVkaXVtJTNEZW1haWwlMjZ1dG1fY2FtcGFpZ24lM0Rob2xpZGF5LW9mZmV=
+yLTIwMjMlMjZ1dG1fdGVybSUzRGVtYWlsMTA=3D&sig=3D5sduDtmC1x9mmd5gvzw7cWLR2Fp99=
+H2g5d3PmGG3LxwP&iat=3D1703600859&a=3D%7C%7C66788452%7C%7C&account=3Deccounc=
+il34531%2Eactivehosted%2Ecom&email=3Dq6gL0FsDqpj3T%2FnoDZaUx%2BTGf1kHAWx6s0=
+kKOWj%2BeqDO%3ADUBFX8XspM5vOqOTZ2ZqVGJkhqnozzaI&s=3D060a163b8f78fb6518bfa68=
+8da531408&i=3D1795A1814A6A11575" target=3D"_blank">
+=09=09=09=09=09=09=09  <img src=3D"https://edm-image.s3.us-west-2.amazonaws=
+.com/2023/Dec/Holiday-Offer-Emailer-Set2-EDM6/Get-Offer-Lasts-Gold-Btn.png"=
+ alt=3D"" width=3D"280">
+=09=09=09=09=09=09  </a>
+=09=09=09=09=09  </td>=0A
+=09=09=09=09  </tr>=0A
+=09=09=09=09 =20
+=09=09=09=09 =20
+=09=09=09=09  <!--Footer-->=09
+=09=09=09=09 =20
+=09=09=09=09  <tr>
+=09=09=09=09=09  <td align=3D"center" bgcolor=3D"#1d1d1d" style=3D"font-siz=
+e:10px;font-family:Arial,Helvetica,sans-serif;text-align:center;padding:10p=
+x; background: #1d1d1d; line-height: 14px;">
+=09=09=09=09=09=09  <table align=3D"center" width=3D"450" cellspacing=3D"0"=
+ cellpadding=3D"0">
+=09=09=09=09=09=09=09 =20
+=09=09=09=09=09=09=09=09  <tr>
+=09=09=09=09=09=09=09=09=09  <td height=3D"40" width=3D"299" align=3D"cente=
+r"><table class=3D"es-table-not-adapt es-social" cellspacing=3D"0" cellpadd=
+ing=3D"0" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collaps=
+e:collapse;border-spacing:0px;">
+=09=09=09=09=09=09=09=09=09=09 =20
+=09=09=09=09=09=09=09=09=09=09=09  <tr style=3D"border-collapse:collapse;">
+=09=09=09=09=09=09=09=09=09=09=09=09  <td valign=3D"top" align=3D"center" s=
+tyle=3D"padding:0;Margin:0;padding-right:10px;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09  <a href=3D"https://eccouncil34531.=
+lt.acemlnb.com/Prod/link-tracker?redirectUrl=3DaHR0cHMlM0ElMkYlMkZ3d3cuZmFj=
+ZWJvb2suY29tJTJGRUNDb3VuY2lsTGVhcm5pbmc=3D&sig=3DCjbx9sa8ckFKbkiHtKsk5g2KFx=
+bG2VTHzawbbazHBjj9&iat=3D1703600859&a=3D%7C%7C66788452%7C%7C&account=3Decco=
+uncil34531%2Eactivehosted%2Ecom&email=3Dq6gL0FsDqpj3T%2FnoDZaUx%2BTGf1kHAWx=
+6s0kKOWj%2BeqDO%3ADUBFX8XspM5vOqOTZ2ZqVGJkhqnozzaI&s=3D060a163b8f78fb6518bf=
+a688da531408&i=3D1795A1814A6A11567" target=3D"_blank"><img title=3D"Faceboo=
+k" src=3D"https://pwqgx.stripocdn.email/content/assets/img/social-icons/cir=
+cle-white/facebook-circle-white.png" alt=3D"Facebook" width=3D"24" height=
+=3D"24" style=3D"display:block;border:0;outline:none;text-decoration:none;-=
+ms-interpolation-mode:bicubic;"></a></td>=0A
+                                                      <td valign=3D"top" al=
+ign=3D"center" style=3D"padding:0;Margin:0;padding-right:10px;"><a href=3D"=
+https://eccouncil34531.lt.acemlnb.com/Prod/link-tracker?redirectUrl=3DaHR0c=
+HMlM0ElMkYlMkZ0d2l0dGVyLmNvbSUyRkVDQ19MZWFybmluZw=3D=3D&sig=3D71rAmhnbDnT6N=
+jQj7yan797shmFBNdEgUVFT4x2Dh19d&iat=3D1703600859&a=3D%7C%7C66788452%7C%7C&a=
+ccount=3Deccouncil34531%2Eactivehosted%2Ecom&email=3Dq6gL0FsDqpj3T%2FnoDZaU=
+x%2BTGf1kHAWx6s0kKOWj%2BeqDO%3ADUBFX8XspM5vOqOTZ2ZqVGJkhqnozzaI&s=3D060a163=
+b8f78fb6518bfa688da531408&i=3D1795A1814A6A11568" target=3D"_blank"><img tit=
+le=3D"Twitter" src=3D"https://pwqgx.stripocdn.email/content/assets/img/soci=
+al-icons/circle-white/twitter-circle-white.png" alt=3D"Twitter" width=3D"24=
+" height=3D"24" style=3D"display:block;border:0;outline:none;text-decoratio=
+n:none;-ms-interpolation-mode:bicubic;"></a></td>=0A
+                                                      <td valign=3D"top" al=
+ign=3D"center" style=3D"padding:0;Margin:0;padding-right:10px;"><a href=3D"=
+https://eccouncil34531.lt.acemlnb.com/Prod/link-tracker?redirectUrl=3DaHR0c=
+HMlM0ElMkYlMkZ3d3cubGlua2VkaW4uY29tJTJGY29tcGFueSUyRmVjLWNvdW5jaWwtbGVhcm5p=
+bmclMkY=3D&sig=3D8jhMWJnZJdaggmpDARGmxQ6KPkv5JeassVz75GZGkrhH&iat=3D1703600=
+859&a=3D%7C%7C66788452%7C%7C&account=3Deccouncil34531%2Eactivehosted%2Ecom&=
+email=3Dq6gL0FsDqpj3T%2FnoDZaUx%2BTGf1kHAWx6s0kKOWj%2BeqDO%3ADUBFX8XspM5vOq=
+OTZ2ZqVGJkhqnozzaI&s=3D060a163b8f78fb6518bfa688da531408&i=3D1795A1814A6A115=
+69" target=3D"_blank"><img title=3D"Linkedin" src=3D"https://pwqgx.stripocd=
+n.email/content/assets/img/social-icons/circle-white/linkedin-circle-white.=
+png" alt=3D"Linkedin" width=3D"24" height=3D"24" style=3D"display:block;bor=
+der:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;"></=
+a></td>=0A
+                                                      <td valign=3D"top" al=
+ign=3D"center" style=3D"padding:0;Margin:0;"><a href=3D"https://eccouncil34=
+531.lt.acemlnb.com/Prod/link-tracker?redirectUrl=3DaHR0cHMlM0ElMkYlMkZ3d3cu=
+eW91dHViZS5jb20lMkYlNDBFQ0NvdW5jaWwtTGVhcm5pbmc=3D&sig=3D6RRGu8cVGdbr9c1ALF=
+DfCDxmZNENX4SU1jSjhSUdtZ62&iat=3D1703600859&a=3D%7C%7C66788452%7C%7C&accoun=
+t=3Deccouncil34531%2Eactivehosted%2Ecom&email=3Dq6gL0FsDqpj3T%2FnoDZaUx%2BT=
+Gf1kHAWx6s0kKOWj%2BeqDO%3ADUBFX8XspM5vOqOTZ2ZqVGJkhqnozzaI&s=3D060a163b8f78=
+fb6518bfa688da531408&i=3D1795A1814A6A11570" target=3D"_blank"><img title=3D=
+"Youtube" src=3D"https://pwqgx.stripocdn.email/content/assets/img/social-ic=
+ons/circle-white/youtube-circle-white.png" alt=3D"Youtube" width=3D"24" hei=
+ght=3D"24" style=3D"display:block;border:0;outline:none;text-decoration:non=
+e;-ms-interpolation-mode:bicubic;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09  </a>
+=09=09=09=09=09=09=09=09=09=09=09=09  </td>=0A
+=09=09=09=09=09=09=09=09=09=09=09  </tr>=0A
+=09=09=09=09=09=09=09=09=09=09 =20
+=09=09=09=09=09=09=09=09=09=09  </table>=0A
+=09=09=09=09=09=09=09=09=09  </td>=0A
+=09=09=09=09=09=09=09=09  </tr>=0A
+=09=09=09=09=09=09=09=09  <tr>
+=09=09=09=09=09=09=09=09=09  <td height=3D"30" width=3D"299" align=3D"cente=
+r" style=3D"color: #ffffff;"><strong>Copyright &copy; 2023</strong>
+=09=09=09=09=09=09=09=09=09=09  <a href=3D"https://eccouncil34531.lt.acemln=
+b.com/Prod/link-tracker?redirectUrl=3DaHR0cHMlM0ElMkYlMkZ3d3cuZWNjb3VuY2lsL=
+m9yZw=3D=3D&sig=3D75BV5tW1tVcEt5N1xYMmkfcpe47eENSo1amq8v9ZRG24&iat=3D170360=
+0859&a=3D%7C%7C66788452%7C%7C&account=3Deccouncil34531%2Eactivehosted%2Ecom=
+&email=3Dq6gL0FsDqpj3T%2FnoDZaUx%2BTGf1kHAWx6s0kKOWj%2BeqDO%3ADUBFX8XspM5vO=
+qOTZ2ZqVGJkhqnozzaI&s=3D060a163b8f78fb6518bfa688da531408&i=3D1795A1814A6A11=
+571" style=3D"color:#ffffff; text-decoration: none;" target=3D"_blank"> EC-=
+Council</a>  <span style=3D"color: #ffffff;">|</span> <a href=3D"https://ec=
+council34531.lt.acemlnb.com/Prod/link-tracker?redirectUrl=3DaHR0cHMlM0ElMkY=
+lMkZjb2RlcmVkLmVjY291bmNpbC5vcmclMkZwcml2YWN5LXBvbGljeQ=3D=3D&sig=3DCkzGr5x=
+1CV4QzhkiyCMNRqx2gYTzVbBy5CPxp3o3snZz&iat=3D1703600859&a=3D%7C%7C66788452%7=
+C%7C&account=3Deccouncil34531%2Eactivehosted%2Ecom&email=3Dq6gL0FsDqpj3T%2F=
+noDZaUx%2BTGf1kHAWx6s0kKOWj%2BeqDO%3ADUBFX8XspM5vOqOTZ2ZqVGJkhqnozzaI&s=3D0=
+60a163b8f78fb6518bfa688da531408&i=3D1795A1814A6A11572" style=3D"color:#ffff=
+ff" target=3D"_blank"> Privacy Statement</a>
+=09=09=09=09=09=09=09=09=09  </td>=0A
+=09=09=09=09=09=09=09=09  </tr>=0A
+=09=09=09=09=09=09=09 =20
+=09=09=09=09=09=09  </table>=0A
+=09=09=09=09=09=09  <br>
+=09=09=09=09=09  </td>=0A
+=09=09=09=09  </tr>=0A
+=09=09=09=09 =20
+=09=09=09=09=09=09 =20
+             =20
+            </table>=0A
+          </td>=0A
+        </tr>=0A
+     =20
+    </table>=0A
+  <img src=3D"https://eccouncil34531.lt.acemlnb.com/Prod/link-tracker?nl=3D=
+6&c=3D1795&m=3D1814&s=3D060a163b8f78fb6518bfa688da531408&l=3Dopen&account=
+=3Deccouncil34531.activehosted.com&a=3D66788452" border=3D"0" width=3D"1" h=
+eight=3D"1" style=3D"display:block;width:1px!important;min-width:1px!import=
+ant;max-width:1px!important;height:1px!important;border:0;overflow:hidden;"=
+ /><div id=3D"ac-footer" style=3D"clear:both;background-color:inherit;backg=
+round:inherit;min-width:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;padd=
+ing:20px;color:#000000;font-size:11px;font-family:arial,helvetica,sans-seri=
+f;line-height:140%;line-height:1.4;text-align:center;box-sizing:border-box;=
+"><center>Sent to: <span style=3D"font-size:11px;font-family:arial,helvetic=
+a,sans-serif;font-weight:normal;text-decoration:none;outline:none;">kyule64=
+@yahoo.com</span><br><br><a href=3D"http://eccouncil34531.activehosted.com/=
+proc.php?nl=3D6&c=3D1795&m=3D1814&s=3D060a163b8f78fb6518bfa688da531408&act=
+=3Dunsub"=0Astyle=3D"font-size:11px;font-family:arial,helvetica,sans-serif;=
+font-weight:bold;text-decoration:underline;"><span style=3D"font-weight:bol=
+d;text-decoration:underline;">Unsubscribe</span></a><br><br>EC-Council Inte=
+rnational Limited, Sun Ave NE, 101C, Albuquerque, New Mexico 87109, United =
+States</center></div>=0A<br clear=3D"all" /></body>
+=0A</html>
+--_=_swift-265746036658ade05dc29d7.49153783_=_--
+
