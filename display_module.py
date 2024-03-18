@@ -1,34 +1,21 @@
 import ttkbootstrap as tb
 import tkinter as tk
 from tkinter import ttk
-from tkinter import *
+from tkinter import filedialog
 import email
 import re
-from tkinter import filedialog
 import base64
 from tkinterhtml import HtmlFrame
 import requests
 import os
 import magic
 import hashlib
-import email
 from email.parser import BytesParser
-
 
 class EmailProcessor:
     def __init__(self, file_name):
         self.file_name = file_name
-
-    def select_file(self):
-        filetypes = [('EML files', '*.eml'), ('All files', "*.*")]
-        file_name = filedialog.askopenfilename(
-            title='Select email file', initialdir='/home/kl45h/Desktop/MyProject/emails', filetypes=filetypes)
-        if file_name:
-            self.file_name = file_name
-            return file_name
-        else:
-            return None
-
+   
     def pass_email(self):
         if self.file_name:
             try:
@@ -63,27 +50,47 @@ class EmailProcessor:
                              'Originating IP': origin_ip}
 
                 # extract urls from the email body, decode if base64 encoded and print them
-                urls = self.extract_urls(eml_message)
+                urls_with_info = self.extract_urls_ports_protocols_from_email(eml_message)
 
                 # Extract email body
                 email_body, body_content = self.extract_body(eml_message)
 
-                return e_headers, urls, email_body, body_content, eml_message, origin_ip, origin_domain
+                return e_headers, urls_with_info, email_body, body_content, eml_message, origin_ip, origin_domain
             except Exception as e:
                 print("Error processing email:", e)
                 return None
         else:
             return None
 
-    def extract_urls(self, eml_message):
-        urls = set()  # Use a set to avoid duplicates
+    # def extract_urls(self, eml_message):
+    #     urls = set()  # Use a set to avoid duplicates
 
-        for part in eml_message.walk():
-            if part.get_content_type() == "text/plain":
-                urls.update(re.findall(r'(https?://\S+)', str(part.get_payload(decode=True))))
-            # elif part.get_content_type() == "text/html":
-            #     urls.update(re.findall(r'(https?://\S+)', str(part.get_payload(decode=True))))
-        return list(urls)
+    #     for part in eml_message.walk():
+    #         if part.get_content_type() == "text/plain":
+    #             urls.update(re.findall(r'(https?://\S+)', str(part.get_payload(decode=True))))
+    #         # elif part.get_content_type() == "text/html":
+    #         #     urls.update(re.findall(r'(https?://\S+)', str(part.get_payload(decode=True))))
+    #     return list(urls)
+
+    def extract_urls_ports_protocols_from_email(self, email_message):
+        urls_with_info = []
+        try:
+            # Regular expression to match URLs with protocol and port
+            url_with_info_regex = r'((https?|ftp):\/\/[\w\-]+(\.[\w\-]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?)(?::(\d{1,5}))?'
+
+            # Extract URLs with protocol and port
+            matches = re.findall(url_with_info_regex, str(email_message))  # Ensure email_message is converted to string
+            for match in matches:
+                url = match[0]
+                protocol = match[1]
+                port = match[4] if match[4] else None
+                urls_with_info.append({'url': url, 'protocol': protocol, 'port': port})
+
+        except Exception as e:
+            print(f"An error occurred: {str(e)}")
+        print(urls_with_info)
+        return urls_with_info
+
 
     def extract_body(self, eml_message):
         email_body = ""
@@ -108,7 +115,7 @@ class VirusTotalScanner:
             return None, None
 
         url = f"https://www.virustotal.com/api/v3/domains/{self.origin_domain}"
-        api_key = "9ed7909202a8f10e55d5d75f2783bdcce01e1f15d2975e8c4c566ee4bf013440"
+        api_key = "VIRUS TOTAL API KEY"
         headers = {
             "accept": "application/json",
             "x-apikey": api_key
@@ -195,7 +202,18 @@ class FileProcessor:
 
 class GUI:
     def __init__(self):
-        self.file_name = 'emails/test2.eml'
+        self.file_name = None
+        self.select_instance = EmailProcessor(self.file_name)
+
+    def select_file(self, root):
+        filetypes = [('EML files', '*.eml'), ('All files', "*.*")]
+        file_name = filedialog.askopenfilename(
+            title='Select email file', initialdir='/home/kl45h/Desktop/MyProject/emails', filetypes=filetypes)
+        if file_name:
+            self.file_name = file_name
+            self.select_instance = EmailProcessor(self.file_name)
+            self.display_page()
+            root.destroy()
 
     def display_page(self):
         root = tb.Window(themename='superhero')
@@ -204,37 +222,50 @@ class GUI:
         root.place_window_center()
         root.style.configure('long.TNotebook', tabposition='wn', foreground='red')
 
+        # Function to open about window
+        def open_about_window():
+            about_window = tk.Toplevel()
+            about_window.title("about email-studio")
+            about_window.geometry("660x200")
+            about_window.geometry("+%d+%d" % ((about_window.winfo_screenwidth() - 600) / 2, (about_window.winfo_screenheight() - 200) / 2))
+            about_window.resizable(False,False)
+
+            # Add credits, copyright information, and purpose of the software
+            about_label = ttk.Label(about_window, text="""email-studio 1.00 - Analyzing Phishing emails\n\nDeveloper: Joseph Kilatya\n\nCopyright © 2024 josephkilatya\n\nThis softaware is provided 'as-is', whithout any expressed or implied warranty. \nIn no event will the author be held liable for any damage arising from the use of this software.""")
+            about_label.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+
         # Create a menu bar
         menu_bar = tb.Menu(root)
 
         # Create File menu
-        file_menu = tb.Menu(menu_bar, tearoff=0)
-        file_menu.add_command(label="New")
-        file_menu.add_command(label="Open")
-        file_menu.add_command(label="Save")
+        file_menu = tb.Menu(menu_bar, tearoff=False)
+        file_menu.add_command(label="Open File", command=lambda: self.select_file(root))
+        file_menu.add_command(label="Close File")
+        file_menu.add_command(label="Report")
         file_menu.add_separator()
         file_menu.add_command(label="Exit", command=root.quit)
         menu_bar.add_cascade(label="File", menu=file_menu)
+        root.config(menu=menu_bar)
 
-        # Create Edit menu
-        edit_menu = tb.Menu(menu_bar, tearoff=0)
-        edit_menu.add_command(label="Cut")
-        edit_menu.add_command(label="Copy")
-        edit_menu.add_command(label="Paste")
-        menu_bar.add_cascade(label="Edit", menu=edit_menu)
+        # Create Settings menu
+        settings_menu = tb.Menu(menu_bar, tearoff=0)
+        # settings_menu.add_command(label="Cut")
+        # settings_menu.add_command(label="Copy")
+        # settings_menu.add_command(label="Paste")
+        menu_bar.add_cascade(label="Settings", menu=settings_menu)
 
-        # Create Help menu
-        help_menu = tb.Menu(menu_bar, tearoff=0)
-        help_menu.add_command(label="About")
-        menu_bar.add_cascade(label="Help", menu=help_menu)
+        # Create About menu
+        about_menu = tb.Menu(menu_bar, tearoff=0)
+        menu_bar.add_cascade(label="About", menu=about_menu)
+        about_menu.add_command(label="About", command=open_about_window)
 
         # Configure the root window to use the menu bar
         root.config(menu=menu_bar)
 
-        email_processor = EmailProcessor(self.file_name)
+        email_processor = self.select_instance
         email_results = email_processor.pass_email()
         if email_results:
-            e_headers, urls, email_body, body_content, eml_message, _, origin_domain = email_results
+            e_headers, urls_with_info, email_body, body_content, eml_message, _, origin_domain = email_results
 
             my_notebook = tb.Notebook(root, bootstyle='dark', style='long.TNotebook')
             my_notebook.pack(fill='both', expand=True)
@@ -270,14 +301,28 @@ class GUI:
 
             urls_scroll = tb.Scrollbar(urls_tab, orient='vertical', bootstyle="primary")
             urls_scroll.pack(side="right", fill="y")
-            urls_columns = ('urls')
-            urls_tree = tb.Treeview(urls_tab, bootstyle="primary", columns=urls_columns, show='headings')
-            urls_tree.pack(fill='both', expand=True)
-            urls_tree.heading('urls', text='URLs')
-            urls_scroll.config(command=urls_tree.yview)
-            for url in urls:
-                urls_tree.insert('', 'end', values=(url,))
 
+            urls_columns = ('urls', 'protocol', 'port')
+            
+            if urls_with_info:
+                urls_tree = tb.Treeview(urls_tab, bootstyle="primary", columns=urls_columns, show='headings')
+                urls_tree.pack(fill=tk.BOTH, expand=True)
+                urls_tree.heading('urls', text='URLs')
+                urls_tree.heading('protocol', text='Protocol')  # Corrected typo here
+                urls_tree.heading('port', text='Port')
+                urls_scroll.config(command=urls_tree.yview)
+                for url_info in urls_with_info:  # Changed variable name to url_info to reflect that it's a dictionary
+                    urls_tree.insert('', 'end', values=(url_info['url'], url_info['protocol'], url_info['port']))  # Corrected values passed to insert method
+
+            else:
+                urls_tree = tb.Treeview(urls_tab, bootstyle="primary", columns=urls_columns,
+                                                show='headings')
+                urls_tree.pack(fill='both', expand=True)
+                urls_tree.heading('urls', text='URLs')
+                urls_tree.heading('protocol', text='Protocol')
+                urls_tree.heading('port', text='Port')
+                urls_tree.insert('', 'end', values=("No URLs Found", ""))
+           
             body_frame = HtmlFrame(body_tab)
             body_frame.set_content(body_content)
             body_frame.pack(fill="both", expand=True)
@@ -335,7 +380,9 @@ class GUI:
             else:
                 no_results_label = tk.Label(virustotal_tab, text="No VirusTotal results available")
                 no_results_label.pack()
+                
         root.mainloop()
+
 
 if __name__ == '__main__':
     gui = GUI()
