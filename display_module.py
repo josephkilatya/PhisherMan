@@ -62,16 +62,6 @@ class EmailProcessor:
         else:
             return None
 
-    # def extract_urls(self, eml_message):
-    #     urls = set()  # Use a set to avoid duplicates
-
-    #     for part in eml_message.walk():
-    #         if part.get_content_type() == "text/plain":
-    #             urls.update(re.findall(r'(https?://\S+)', str(part.get_payload(decode=True))))
-    #         # elif part.get_content_type() == "text/html":
-    #         #     urls.update(re.findall(r'(https?://\S+)', str(part.get_payload(decode=True))))
-    #     return list(urls)
-
     def extract_urls_ports_protocols_from_email(self, email_message):
         urls_with_info = []
         try:
@@ -88,7 +78,7 @@ class EmailProcessor:
 
         except Exception as e:
             print(f"An error occurred: {str(e)}")
-        print(urls_with_info)
+
         return urls_with_info
 
 
@@ -115,7 +105,7 @@ class VirusTotalScanner:
             return None, None
 
         url = f"https://www.virustotal.com/api/v3/domains/{self.origin_domain}"
-        api_key = "VIRUS TOTAL API KEY"
+        api_key = "9ed7909202a8f10e55d5d75f2783bdcce01e1f15d2975e8c4c566ee4bf013440"
         headers = {
             "accept": "application/json",
             "x-apikey": api_key
@@ -128,8 +118,9 @@ class VirusTotalScanner:
 
             summary_intel = vt_results['data']['attributes']['last_analysis_stats']
             engines_intel = vt_results['data']['attributes']['last_analysis_results']
+            whois_data = vt_results['data']['attributes']['whois']
 
-            return summary_intel, engines_intel
+            return summary_intel, engines_intel, whois_data
         except Exception as e:
             print("Error performing VirusTotal scan:", e)
             return None, None
@@ -158,7 +149,7 @@ class FileProcessor:
                 }
                 results.append(file_info)
         else:
-            results.append({"message": "No Attached Files"})
+            results.append({"Message": "No Attached Files"})
 
         return results
 
@@ -276,6 +267,7 @@ class GUI:
             virustotal_tab = tb.Frame(my_notebook)
             attachments_tab = tb.Frame(my_notebook)
             raw_email_tab = tb.Frame(my_notebook)
+            whois_data_tab = tb.Frame(my_notebook)
 
             headers_tab.pack(fill='both', expand=True)
             urls_tab.pack(fill='both', expand=True)
@@ -283,6 +275,7 @@ class GUI:
             virustotal_tab.pack(fill='both', expand=True)
             attachments_tab.pack(fill='both', expand=True)
             raw_email_tab.pack(fill='both', expand=True)
+            whois_data_tab.pack(fill='both', expand=True)
 
             my_notebook.add(headers_tab, text="Headers")
             my_notebook.add(urls_tab, text="URLs")
@@ -290,6 +283,7 @@ class GUI:
             my_notebook.add(virustotal_tab, text="VirusTotal Results")
             my_notebook.add(attachments_tab, text="Attached Files")
             my_notebook.add(raw_email_tab, text="Raw Email")
+            my_notebook.add(whois_data_tab, text="Origin Domain Whois Results")
 
             headers_columns = ('header', 'value')
             headers_tree = tb.Treeview(headers_tab, bootstyle="primary", columns=headers_columns, show='headings')
@@ -308,11 +302,11 @@ class GUI:
                 urls_tree = tb.Treeview(urls_tab, bootstyle="primary", columns=urls_columns, show='headings')
                 urls_tree.pack(fill=tk.BOTH, expand=True)
                 urls_tree.heading('urls', text='URLs')
-                urls_tree.heading('protocol', text='Protocol')  # Corrected typo here
+                urls_tree.heading('protocol', text='Protocol') 
                 urls_tree.heading('port', text='Port')
                 urls_scroll.config(command=urls_tree.yview)
-                for url_info in urls_with_info:  # Changed variable name to url_info to reflect that it's a dictionary
-                    urls_tree.insert('', 'end', values=(url_info['url'], url_info['protocol'], url_info['port']))  # Corrected values passed to insert method
+                for url_info in urls_with_info:  
+                    urls_tree.insert('', 'end', values=(url_info['url'], url_info['protocol'], url_info['port'])) 
 
             else:
                 urls_tree = tb.Treeview(urls_tab, bootstyle="primary", columns=urls_columns,
@@ -355,7 +349,7 @@ class GUI:
             raw_email_body.config(state='disabled')
             raw_email_scroll.config(command=raw_email_body.yview)
 
-            summary_intel, engines_intel = VirusTotalScanner(origin_domain).perform_vt_scan()
+            summary_intel, engines_intel, whois_data = VirusTotalScanner(origin_domain).perform_vt_scan()
             if summary_intel and engines_intel:
                 summary_intel_tree = tb.Treeview(virustotal_tab, columns=('Category', 'Count'), show='headings')
                 summary_intel_tree.heading('Category', text='Category')
@@ -380,7 +374,15 @@ class GUI:
             else:
                 no_results_label = tk.Label(virustotal_tab, text="No VirusTotal results available")
                 no_results_label.pack()
-                
+            
+            whois_data_widget = tb.Text(whois_data_tab, wrap="word")
+            whois_data_widget.pack(fill='both', expand=True)
+            whois_data_widget.insert('1.0', whois_data)
+            whois_data_widget.config(state='disabled')
+
+            # else:
+            #     no_whois_data_label = tk.Label(whois_data_tab, text="No Results")
+            #     no_whois_data_label.pack()      
         root.mainloop()
 
 
