@@ -118,7 +118,7 @@ class VirusTotalScanner:
             return None, None
 
         url = f"https://www.virustotal.com/api/v3/domains/{self.origin_domain}"
-        api_key = "9ed7909202a8f10e55d5d75f2783bdcce01e1f15d2975e8c4c566ee4bf013440"
+        api_key = "VIRUSTOTAL API KEY"
         headers = {
             "accept": "application/json",
             "x-apikey": api_key
