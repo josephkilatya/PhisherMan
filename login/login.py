@@ -4,6 +4,10 @@ import tkinter.messagebox as messagebox
 import sqlite3
 import hashlib
 import re
+import sys
+sys.path.append('/home/kl45h/Desktop/MyProject/display_module/')
+import display_module
+
 
 # Hashing function for passwords
 def hash_password(password):
@@ -16,13 +20,17 @@ c = conn.cursor()
 # Create user table
 c.execute('''CREATE TABLE IF NOT EXISTS users
              (id INTEGER PRIMARY KEY AUTOINCREMENT, 
+              first_name TEXT,
+              last_name TEXT,
               username TEXT UNIQUE, 
+              email TEXT,
               password TEXT)''')
 
 class LoginForm(ttk.Frame):
-    def __init__(self, master):
+    def __init__(self, master, root):
         super().__init__(master, padding=(20, 10))
         self.pack(fill=tk.BOTH, expand=tk.YES)
+        self.root = root
 
         # form variables
         self.user_name = tk.StringVar(value="")
@@ -77,7 +85,7 @@ class LoginForm(ttk.Frame):
     def show_wrong_credentials_message():
         messagebox.showerror("Error", "Invalid username or password!")
 
-    def on_submit(self):
+    def on_submit(self, root):
         """Login operation"""
         username = self.user_name.get().strip()  # Remove leading/trailing whitespace
         password = self.password.get().strip()  # Remove leading/trailing whitespace
@@ -106,14 +114,17 @@ class LoginForm(ttk.Frame):
         
         c.execute("SELECT * FROM users WHERE username=? AND password=?", (username, password))
         result = c.fetchone()
+        conn.close()
         
         if result:
+            self.master.destroy()
+            display_window = display_module.GUI(root)
+            display_window.mainloop()
             messagebox.showinfo("Success", "Login successful!")
             print("Login Successful")
         else:
             messagebox.showerror("Error", "Invalid username or password.")
-            print("Invalid username or password")
-
+            
 
     def switchWindows(self):
         self.master.switch_to_signup()
@@ -180,11 +191,11 @@ class SignUpForm(ttk.Frame):
 
     def on_submit(self):
         """Signup operation"""
-        first_name = self.first_name.get().strip()  # Remove leading/trailing whitespace
-        last_name = self.last_name.get().strip()  # Remove leading/trailing whitespace
-        username = self.user_name.get().strip()  # Remove leading/trailing whitespace
-        email = self.email.get().strip()  # Remove leading/trailing whitespace
-        password = self.password.get().strip()  # Remove leading/trailing whitespace
+        first_name = self.first_name.get().strip() 
+        last_name = self.last_name.get().strip() 
+        username = self.user_name.get().strip()  
+        email = self.email.get().strip()  
+        password = self.password.get().strip()  
         
         if not first_name or not last_name or not username or not email or not password:
             messagebox.showerror("Error", "Please fill in all fields.")
@@ -228,7 +239,7 @@ class MainWindow(tk.Tk):
         self.geometry('800x600')
         self.resizable(False, False)
 
-        self.login_form = LoginForm(self)
+        self.login_form = LoginForm(self, self)
         self.signup_form = SignUpForm(self)
         self.current_form = self.login_form
         
