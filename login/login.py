@@ -7,6 +7,7 @@ import re
 import sys
 sys.path.append('/home/kl45h/Desktop/MyProject/display_module/')
 import display_module
+from ttkbootstrap import Style
 
 
 # Hashing function for passwords
@@ -26,6 +27,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS users
               email TEXT,
               password TEXT)''')
 
+
 class LoginForm(ttk.Frame):
     def __init__(self, master, root):
         super().__init__(master, padding=(20, 10))
@@ -37,8 +39,7 @@ class LoginForm(ttk.Frame):
         self.password = tk.StringVar(value="")
 
         # form header
-        hdr_txt = "Enter Username and Password" 
-        hdr = ttk.Label(master=self, text=hdr_txt, width=50)
+        hdr = ttk.Label(master=self, text="Sign In", style='primary.TLabel',font=('Microsoft YaHei UI Light',23,'bold') )
         hdr.pack(fill=tk.X, pady=10)
 
         # form entries
@@ -51,10 +52,13 @@ class LoginForm(ttk.Frame):
         container = ttk.Frame(self)
         container.pack(fill=tk.X, expand=tk.YES, pady=5)
 
-        lbl = ttk.Label(master=container, text=label.title(), width=10)
+        lbl = ttk.Label(master=container, text=label.title(), width=10, style='primary.TLabel')
         lbl.pack(side=tk.LEFT, padx=5)
 
-        ent = ttk.Entry(master=container, textvariable=variable)
+        if label.lower() == "password":
+            ent = ttk.Entry(master=container, textvariable=variable, style='primary.TEntry', show="*")
+        else:
+            ent = ttk.Entry(master=container, textvariable=variable, style='primary.TEntry')
         ent.pack(side=tk.LEFT, padx=5, fill=tk.X, expand=tk.YES)
 
     def create_buttonbox(self):
@@ -67,6 +71,7 @@ class LoginForm(ttk.Frame):
             text="Login",
             command=self.on_submit,
             width=6,
+            style='success.TButton'
         )
         sub_btn.pack(side=tk.RIGHT, padx=5)
         sub_btn.focus_set()
@@ -76,6 +81,7 @@ class LoginForm(ttk.Frame):
             text="Sign Up",
             command=self.switchWindows,
             width=6,
+            style='info.TButton'
         )
         cnl_btn.pack(side=tk.RIGHT, padx=5)
 
@@ -85,7 +91,7 @@ class LoginForm(ttk.Frame):
     def show_wrong_credentials_message():
         messagebox.showerror("Error", "Invalid username or password!")
 
-    def on_submit(self, root):
+    def on_submit(self):
         """Login operation"""
         username = self.user_name.get().strip()  # Remove leading/trailing whitespace
         password = self.password.get().strip()  # Remove leading/trailing whitespace
@@ -114,13 +120,13 @@ class LoginForm(ttk.Frame):
         
         c.execute("SELECT * FROM users WHERE username=? AND password=?", (username, password))
         result = c.fetchone()
-        conn.close()
         
         if result:
-            self.master.destroy()
-            display_window = display_module.GUI(root)
-            display_window.mainloop()
+            # self.master.destroy()
+            # display_window = display_module.GUI(root=self.root)
             messagebox.showinfo("Success", "Login successful!")
+            # display_window.show()
+            self.master.switch_to_display()        
             print("Login Successful")
         else:
             messagebox.showerror("Error", "Invalid username or password.")
@@ -142,10 +148,10 @@ class SignUpForm(ttk.Frame):
         self.user_name = tk.StringVar(value="")
         self.email = tk.StringVar(value="")
         self.password = tk.StringVar(value="")
+        self.confirm_password = tk.StringVar(value="")
 
         # form header
-        hdr_txt = "Enter your credentials " 
-        hdr = ttk.Label(master=self, text=hdr_txt, width=50)
+        hdr = ttk.Label(master=self, text="Sign Up", style='primary.TLabel', font=('Microsoft YaHei UI Light',23,'bold'))
         hdr.pack(fill=tk.X, pady=10)
 
         # form entries
@@ -154,6 +160,7 @@ class SignUpForm(ttk.Frame):
         self.create_form_entry("Username", self.user_name)
         self.create_form_entry("Email", self.email)
         self.create_form_entry("Password", self.password)
+        self.create_form_entry("Confirm Password", self.confirm_password)
         self.create_buttonbox()
 
     def create_form_entry(self, label, variable):
@@ -161,12 +168,15 @@ class SignUpForm(ttk.Frame):
         container = ttk.Frame(self)
         container.pack(fill=tk.X, expand=tk.YES, pady=5)
 
-        lbl = ttk.Label(master=container, text=label.title(), width=10)
+        lbl = ttk.Label(master=container, text=label.title(), width=15, style='primary.TLabel')
         lbl.pack(side=tk.LEFT, padx=5)
 
-        ent = ttk.Entry(master=container, textvariable=variable)
+        if label.lower() in ["password", "confirm password"]:
+            ent = ttk.Entry(master=container, textvariable=variable, style='primary.TEntry', show="*")
+        else:
+            ent = ttk.Entry(master=container, textvariable=variable, style='primary.TEntry')
         ent.pack(side=tk.LEFT, padx=5, fill=tk.X, expand=tk.YES)
-        
+
     def create_buttonbox(self):
         """Create the application buttonbox"""
         container = ttk.Frame(self)
@@ -177,6 +187,7 @@ class SignUpForm(ttk.Frame):
             text="Sign Up",
             command=self.on_submit,
             width=6,
+            style='success.TButton'
         )
         sub_btn.pack(side=tk.RIGHT, padx=5)
         sub_btn.focus_set()
@@ -186,6 +197,7 @@ class SignUpForm(ttk.Frame):
             text="Back",
             command=self.switchWindows,
             width=6,
+            style='info.TButton'
         )
         cnl_btn.pack(side=tk.RIGHT, padx=5)
 
@@ -196,8 +208,9 @@ class SignUpForm(ttk.Frame):
         username = self.user_name.get().strip()  
         email = self.email.get().strip()  
         password = self.password.get().strip()  
-        
-        if not first_name or not last_name or not username or not email or not password:
+        confirm_password = self.confirm_password.get().strip()
+
+        if not first_name or not last_name or not username or not email or not password or not confirm_password:
             messagebox.showerror("Error", "Please fill in all fields.")
             return
 
@@ -214,6 +227,11 @@ class SignUpForm(ttk.Frame):
         # Validate password format
         if not is_valid_password(password):
             messagebox.showerror("Error", "Invalid password format. Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one symbol.")
+            return
+
+        # Check if passwords match
+        if password != confirm_password:
+            messagebox.showerror("Error", "Passwords do not match.")
             return
 
         # Perform signup operation
@@ -235,9 +253,11 @@ class SignUpForm(ttk.Frame):
 class MainWindow(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Sign Up Form")
-        self.geometry('800x600')
-        self.resizable(False, False)
+        self.title("Sign Up")
+        self.geometry('925x500+300+200')
+        self.resizable(True, True)
+        
+        style = Style(theme='superhero')
 
         self.login_form = LoginForm(self, self)
         self.signup_form = SignUpForm(self)
@@ -254,6 +274,12 @@ class MainWindow(tk.Tk):
         self.signup_form.pack_forget()
         self.login_form.pack(fill=tk.BOTH, expand=tk.YES)
 
+    def switch_to_display(self):
+        self.login_form.pack_forget()
+        self.signup_form.pack_forget()
+        self.display_window = display_module.GUI(self)  # Create an instance of the display window
+        self.display_window.mainloop()
+
 
 # Define email and password validation functions
 def is_valid_email(email):
@@ -268,3 +294,5 @@ def is_valid_password(password):
 if __name__ == "__main__":
     app = MainWindow()
     app.mainloop()
+
+    
