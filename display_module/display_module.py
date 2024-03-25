@@ -118,7 +118,7 @@ class VirusTotalScanner:
             return None, None
 
         url = f"https://www.virustotal.com/api/v3/domains/{self.origin_domain}"
-        api_key = "VIRUSTOTAL API KEY"
+        api_key = "9ed7909202a8f10e55d5d75f2783bdcce01e1f15d2975e8c4c566ee4bf013440"
         headers = {
             "accept": "application/json",
             "x-apikey": api_key
@@ -236,6 +236,9 @@ class GUI:
 
         # Configure the root window to use the menu bar
         root.config(menu=menu_bar)
+
+    def show(self):
+        self.root.mainloop()
 
     def select_file(self, root):
         filetypes = [('EML files', '*.eml'), ('All files', "*.*")]
@@ -411,7 +414,6 @@ class GUI:
 
 
 if __name__ == '__main__':
-
     root = tb.Window(themename='superhero')
     root.title('Email-Studio')
     root.geometry('1024x768')

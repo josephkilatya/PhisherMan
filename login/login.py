@@ -253,11 +253,18 @@ class SignUpForm(ttk.Frame):
 class MainWindow(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Sign Up")
+        self.title("Welcome to Email-Studio")
         self.geometry('925x500+300+200')
         self.resizable(True, True)
         
         style = Style(theme='superhero')
+
+        # Load the background image
+        background_image = tk.PhotoImage(file="/home/kl45h/Desktop/MyProject/login/login.png")
+
+        # Create a label to hold the background image
+        background_label = tk.Label(self, image=background_image)
+        background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
         self.login_form = LoginForm(self, self)
         self.signup_form = SignUpForm(self)

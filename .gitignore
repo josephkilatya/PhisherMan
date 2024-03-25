@@ -1,0 +1,11 @@
+user_data.db
+
+.log
+
+attachments/
+emails/
+
+resources/
+env/
+output/
+report/
