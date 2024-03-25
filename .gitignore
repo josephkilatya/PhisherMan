@@ -9,3 +9,4 @@ resources/
 env/
 output/
 report/
+__pycache__
