@@ -237,6 +237,23 @@ class GUI:
         # Configure the root window to use the menu bar
         root.config(menu=menu_bar)
 
+    def copy_row(self, event):
+    # Get the treeview from the event
+        tree = event.widget
+        # Get the selected item
+        selected_item = tree.selection()
+        # Check if there is a selected item
+        if selected_item:
+            selected_item = selected_item[0]
+            # Get the text of all columns in the selected row
+            row_values = tree.item(selected_item, 'values')
+            # Format the row values as a string separated by tabs
+            row_text = '\t'.join(map(str, row_values))
+            # Copy the text to the clipboard
+            tree.clipboard_clear()
+            tree.clipboard_append(row_text)
+
+
     def show(self):
         self.root.mainloop()
 
@@ -314,6 +331,7 @@ class GUI:
             headers_tree.heading('value', anchor='w')
             for header, value in e_headers.items():
                 headers_tree.insert('', 'end', values=(header, self.wrap(value)))
+            headers_tree.bind('<Button-3>', self.copy_row)
 
 
             urls_scroll = tb.Scrollbar(urls_tab, orient='vertical', bootstyle="primary")
@@ -330,6 +348,7 @@ class GUI:
                 urls_scroll.config(command=urls_tree.yview)
                 for url_info in urls_with_info:  
                     urls_tree.insert('', 'end', values=(url_info['url'], url_info['protocol'], url_info['port'])) 
+                urls_tree.bind('<Button-3>', self.copy_row)
 
             else:
                 urls_tree = tb.Treeview(urls_tab, bootstyle="primary", columns=urls_columns,
@@ -380,6 +399,7 @@ class GUI:
                 summary_intel_tree.pack(fill='both', expand=True)
                 for category, count in summary_intel.items():
                     summary_intel_tree.insert('', 'end', values=(category, count))
+                summary_intel_tree.bind('<Button-3>', self.copy_row)
 
                 engines_intel_tree = tb.Treeview(virustotal_tab,
                                                     columns=('Engine Name', 'Category', 'Result', 'Method'),
@@ -395,6 +415,7 @@ class GUI:
                         engines_intel_tree.insert('', 'end',
                                                     values=(engine, details['category'], details['result'],
                                                             details['method']))
+                engines_intel_tree.bind('<Button-3>', self.copy_row)
             else:
                 no_results_label = tk.Label(virustotal_tab, text="No VirusTotal results available")
                 no_results_label.pack()
