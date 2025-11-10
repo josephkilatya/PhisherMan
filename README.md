@@ -1,9 +1,7 @@
-Now I can see both pieces of code! Let me create a comprehensive README file for your complete project.
-
 # README.md
 
 ```markdown
-# Email-Studio: Phishing Email Analysis Tool
+# PhisherMan: Phishing Email Analysis Tool
 
 A comprehensive desktop application for analyzing and investigating phishing emails with advanced security features and detailed email forensics.
 
@@ -103,11 +101,6 @@ python main.py
 - Generate security reports
 
 ## Modules Overview
-
-### Authentication Module (`main.py`, `login.py`)
-- User registration and login forms
-- Password security validation
-- Session management
 
 ### Email Processing Module (`display_module/__init__.py`)
 - **EmailProcessor**: Parses .eml files and extracts metadata
