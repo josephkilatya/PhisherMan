@@ -11,12 +11,6 @@ PhisherMan is a powerful Python-based application that provides security analyst
 
 ## Features
 
-### 🔐 Authentication System
-- Secure user login and registration
-- Password hashing with SHA-256
-- Input validation and sanitization
-- SQLite database for user management
-
 ### 📧 Email Analysis
 - **Header Analysis**: Extract and display complete email headers
 - **URL Extraction**: Identify and analyze URLs with protocol and port information
