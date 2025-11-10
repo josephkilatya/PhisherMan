@@ -7,7 +7,7 @@ A comprehensive desktop application for analyzing and investigating phishing ema
 
 ## Overview
 
-Email-Studio is a powerful Python-based application that provides security analysts with tools to examine suspicious emails, extract metadata, analyze attachments, and perform threat intelligence lookups.
+PhisherMan is a powerful Python-based application that provides security analysts with tools to examine suspicious emails, extract metadata, analyze attachments, and perform threat intelligence lookups.
 
 ## Features
 
@@ -38,7 +38,7 @@ Email-Studio is a powerful Python-based application that provides security analy
 ## Project Structure
 
 ```
-email-studio/
+PhisherMan/
 ├── main.py                 # Main application entry point
 ├── login.py               # Authentication forms and validation
 ├── display_module/
@@ -205,4 +205,4 @@ For issues and feature requests, please ensure:
 7. **Module Documentation**: Explains each component's purpose
 8. **Legal Compliance**: Important disclaimers and usage guidelines
 
-The README now provides a complete guide for users to install, configure, and use your Email-Studio application effectively.
+The README now provides a complete guide for users to install, configure, and use your PhisherMan application effectively.
