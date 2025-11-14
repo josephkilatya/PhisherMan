@@ -137,10 +137,6 @@ api_key = "your_virustotal_api_key_here"
    - Verify API key validity
    - Monitor API rate limits
 
-### Database Issues
-- The application creates a SQLite database automatically
-- Ensure write permissions in the application directory
-
 ## Development
 
 ### Adding New Analysis Features
@@ -190,7 +186,7 @@ For issues and feature requests, please ensure:
 
 ## Key Improvements in the README:
 
-1. **Complete Project Overview**: Now covers both authentication and email analysis components
+1. **Complete Project Overview**: Now covers email analysis components
 2. **Detailed Installation Instructions**: Includes system-specific dependencies
 3. **Comprehensive Usage Guide**: Step-by-step instructions for all features
 4. **API Configuration**: Instructions for setting up VirusTotal integration
